@@ -32,7 +32,7 @@ My startup will be a competitive card game where you can collect cards with diff
 
 ![Design image](startup_design.jpg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Top Left: Main menu. All buttons will be grayed out aside from login and sign up until the user does so. Top Right: Card collection screen. Users can view their cards, choose which ones are in their deck, trade with friends, and destroy extra cards for rewards. Bottom Left: Battle screen. Players can see cards in their hand, how many their opponent has, and the effects of cards change the play area in real time. Bottom Right: Friend list. Users can add friends through usernames saved on the database and see which of their friends are online, offer trades, or challenge them to battles.
 
 ```mermaid
 sequenceDiagram
