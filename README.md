@@ -22,7 +22,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
 - [x] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -35,6 +35,8 @@ My startup will be a competitive card game where you can collect cards with diff
 Top Left: Main menu. All buttons will be grayed out aside from login and sign up until the user does so. Top Right: Card collection screen. Users can view their cards, choose which ones are in their deck, trade with friends, and destroy extra cards for rewards. Bottom Left: Battle screen. Players can see cards in their hand, how many their opponent has, and the effects of cards change the play area in real time. Bottom Right: Friend list. Users can add friends through usernames saved on the database and see which of their friends are online, offer trades, or challenge them to battles.
 
 ![Backend diagram image](startup_backend_diagram.jpg)
+
+Diagram of how users interact with the backend to play. On their turn, players choose which of their cards to play or otherwise make a move, which is sent to the server. The server interprets the play and updates the gamestate accordingly. The server then sends the update back to both users to update their screens.
 
 ### Key features
 
