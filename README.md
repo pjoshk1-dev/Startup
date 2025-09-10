@@ -20,13 +20,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-My startup will be a competitive card game where you can collect cards with different unique abilities and use them in battles with your friends.
+My startup will be a competitive card game where you can collect cards with different unique abilities and use them in battles with your friends. Each card you collect will be added to your deck, from which you can trade or destroy them to optimize your build. You then use them in battles against other players to collect more, and the cycle continues.
 
 ### Design
 
@@ -43,20 +43,24 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Interactive card battles between users
+- Ability to collect, trade, and destroy cards in the user's personal collection
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Structure of application. HTML pages for menu/login, card collection, and play.
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **CSS** - Visual design, unique card graphics, and animations.
+- **React** - interactive menu and gameplay behavior.
+- **Service** - Backend service with endpoints for:
+    - Login
+    - Finding matches
+    - Submitting player moves
+    - Retrieving opponent moves
+- **DB/Login** - Saving user login info, card collections, and gameplay statistics.
+- **WebSocket** - Connecting players for PvP (player verse player) battles. Player moves are broadcast to their opponent(s).
 
 ## 🚀 AWS deliverable
 
