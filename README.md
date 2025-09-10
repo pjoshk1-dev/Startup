@@ -34,12 +34,7 @@ My startup will be a competitive card game where you can collect cards with diff
 
 Top Left: Main menu. All buttons will be grayed out aside from login and sign up until the user does so. Top Right: Card collection screen. Users can view their cards, choose which ones are in their deck, trade with friends, and destroy extra cards for rewards. Bottom Left: Battle screen. Players can see cards in their hand, how many their opponent has, and the effects of cards change the play area in real time. Bottom Right: Friend list. Users can add friends through usernames saved on the database and see which of their friends are online, offer trades, or challenge them to battles.
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+![Backend diagram image](startup_backend_diagram.jpg)
 
 ### Key features
 
