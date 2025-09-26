@@ -70,14 +70,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - I created index.html for the main menu and login, as well as play.html, collection.html, friends.html, and about.html.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - I learned and use several html tags.
+- [x] **Links** - I linked the menu (index.html) to the other pages, and the other pages to the menu.
+- [x] **Text** - About page has a brief description of the application.
+- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable, I still don't know where to use an API.
+- [x] **Images** - About page has a design concept of the application.
+- [x] **Login placeholder** - index.html has a login placeholder.
+- [x] **DB data placeholder** - Collection and friends pages have data placeholders.
+- [x] **WebSocket placeholder** - Play page has placeholder.
 
 ## 🚀 CSS deliverable
 
