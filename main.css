@@ -1,6 +1,9 @@
 html, body {
   height: 100%;
   margin: 0;
+  font-size: 16px;
+  font-family: "Bebas Neue";
+  font-weight: 400;
 }
 
 /* Set up flexbox column layout on the body */
@@ -16,10 +19,56 @@ body {
   justify-content: center; /* centers the group vertically */
   align-items: center;     /* centers horizontally */
   text-align: center;
+  background-color: #06db7f;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 5rem);
+  align-items: center;
+  text-shadow:
+    -0.3rem -0.3rem 0 #00532f,
+     0.3rem -0.3rem 0 #00532f,
+    -0.3rem  0.3rem 0 #00532f,
+     0.3rem  0.3rem 0 #00532f;
+}
+
+.navbar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center; 
+}
+
+/* Make links look like buttons */
+.nav-link {
+  text-decoration: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background-color: #0056b3;
+}
+
+.field {
+  padding: 5px;
+  font-family: "Bebas Neue";
+  border: 3px solid #00532f;
+  border-radius: 1rem;
+  align-items: center;
+  background-color: #9ff0cd;
+  color: #333;
 }
 
 footer {
-  background-color: #06db7f;
+  background-color: #00532f;
   text-align: center;
   padding: 1rem;
 }
