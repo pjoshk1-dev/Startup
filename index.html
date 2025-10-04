@@ -6,50 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Startup HTML</title>
     <link rel="stylesheet" href="main.css" />
-
-    <!-- Include bootstrap CSS framework -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
   </head>
   <body>
-    <header>
-      <h1 class="title">Game Title Here</h1>
-      <nav class="navbar fixed-top navbar-dark">
-        <menu class="navbar">
-          <li class="nav-item">
-            <a class="nav-link active" href="play.html">Play</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="collection.html">Collection</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="friends.html">Friends</a>
-          </li>
-        </menu>
-      </nav>
-    </header>
+    <div class="content">
+      <header>
+        <h1 class="title">Game Title Here</h1>
+        <nav>
+          <menu class="navbar">
+            <li class="nav-item">
+              <a class="nav-link active" href="play.html">Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="collection.html">Collection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="friends.html">Friends</a>
+            </li>
+          </menu>
+        </nav>
+      </header>
 
-    <main>
-      <h2>Login to save data and connect</h2>
-      <form method="get" action="play.html">
-        <div>
-          <input type="text" placeholder="username" />
-        </div>
-        <div>
-          <input type="password" placeholder="password" />
-        </div>
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
-      </form>
-    </main>
-
+      <main>
+        <h2>Login to save data and connect</h2>
+        <form method="get" action="play.html">
+          <div>
+            <input type="text" placeholder="username" />
+          </div>
+          <div>
+            <input type="password" placeholder="password" />
+          </div>
+          <button type="submit">Login</button>
+          <button type="submit">Create</button>
+        </form>
+      </main>
+    </div>
     <footer>
       <hr />
       <span class="text-reset">Author: Josh Phister</span>
