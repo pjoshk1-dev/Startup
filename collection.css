@@ -1,0 +1,31 @@
+main {
+  width: 100%;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+header {
+  padding: 1.5rem;
+  background-color: #06db7f;
+}
