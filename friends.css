@@ -1,0 +1,53 @@
+header {
+  padding: 1.5rem;
+  background-color: #06db7f;
+}
+
+.friends-table-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.friends-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff0f6;
+  border: 3px solid #00532f;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(105, 255, 240, 0.2);
+}
+
+.friends-table thead {
+  background-color: #00532f;
+  color: white;
+}
+
+.friends-table th,
+.friends-table td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.friends-table tbody tr:nth-child(even) {
+  background-color: #e6fffc;
+}
+
+.status {
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.status.online {
+  background-color: #c4f5c4;
+  color: #2e8b57;
+}
+
+.status.offline {
+  background-color: #f8d7da;
+  color: #a33a3a;
+}

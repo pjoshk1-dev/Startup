@@ -5,15 +5,49 @@
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Startup HTML</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="friends.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </head>
   </head>
   <header>
       <nav>
         <div>
-          <a href="index.html">Exit to Menu</a>
+          <a class="nav-link" href="index.html">Exit to Menu</a>
         </div>
       </nav>
   </header>
-  <main>
-    <p>Data Placeholder</p>
+  <main class="content">
+    <section class="friends-table-container">
+      <h2>Your Friends</h2>
+      <table class="friends-table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td><span class="status online">Online</span></td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td><span class="status offline">Offline</span></td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td><span class="status online">Online</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </main>
+  <footer>
+    <hr />
+    <span class="text-reset">Author: Josh Phister</span>
+    <br />
+    <a href="https://github.com/pjoshk1-dev/Starup">GitHub</a>
+  </footer>
 </html>
