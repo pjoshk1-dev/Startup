@@ -5,15 +5,39 @@
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Startup HTML</title>
+    <link rel="stylesheet" href="play.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   </head>
   <header>
-      <nav>
-        <div>
-          <a href="index.html">Exit to Menu</a>
-        </div>
-      </nav>
+    <nav>
+      <div>
+        <a class="nav-link" href="index.html">Exit to Menu</a>
+      </div>
+    </nav>
   </header>
-  <main>
-    <p>Placeholder (Will connect to other players through Websocket)</p>
-  </main>
+  <body>
+    <div class="play-page">
+      <!-- Opponent's hand -->
+      <div class="opponent-hand">
+        <div class="card small back"></div>
+        <div class="card small back"></div>
+        <div class="card small back"></div>
+        <div class="card small back"></div>
+      </div>
+
+      <!-- Play area -->
+      <div class="play-area">
+        <div class="card tiny">icon</div>
+        <div class="card tiny">icon</div>
+      </div>
+
+      <!-- User's hand -->
+      <div class="user-hand">
+        <div class="card medium">icon</div>
+        <div class="card medium">icon</div>
+        <div class="card medium">icon</div>
+        <div class="card medium">icon</div>
+      </div>
+    </div>
+  </body>
 </html>
