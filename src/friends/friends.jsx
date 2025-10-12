@@ -1,4 +1,5 @@
 import React from 'react';
+import './friends.css';
 
 const Friends = () => (
   <main className="content">

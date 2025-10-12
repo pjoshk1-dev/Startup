@@ -1,4 +1,5 @@
 import React from 'react';
+import './play.css';
 
 const Play = () => (
   <div className="play-page">

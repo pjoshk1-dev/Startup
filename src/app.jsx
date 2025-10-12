@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import WithFooter from './layouts/WithFooter.jsx';
 import NoFooter from './layouts/NoFooter';
+import HomeLayout from './layouts/HomeLayout';
 
 import Login from './login/login';
 import About from './about/about';
@@ -16,8 +17,12 @@ export default function App() {
   return (
   <BrowserRouter>
     <Routes>
-      <Route element={<WithFooter />}>
+      <Route element={<HomeLayout />}>
         <Route path="/" element={<Login />} />
+      </Route>
+
+      <Route element={<WithFooter />}>
+
         <Route path="/about" element={<About />} />
       </Route>
 
