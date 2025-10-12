@@ -12,16 +12,16 @@ const Header = () => {
         <nav>
           <menu className="navbar">
             <li className="nav-item">
-              <NavLink className="nav-link" href="play">Play</NavLink>
+              <NavLink className="nav-link" to="play">Play</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" href="collection">Collection</NavLink>
+              <NavLink className="nav-link" to="collection">Collection</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" href="about">About</NavLink>
+              <NavLink className="nav-link" to="about">About</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" href="friends">Friends</NavLink>
+              <NavLink className="nav-link" to="friends">Friends</NavLink>
             </li>
           </menu>
         </nav>
@@ -30,7 +30,7 @@ const Header = () => {
     <header>
       <nav>
         <div>
-          <NavLink className="nav-link" href="">Exit to Menu</NavLink>
+          <NavLink className="nav-link" to="">Exit to Menu</NavLink>
         </div>
       </nav>
     </header>
