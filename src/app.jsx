@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -22,7 +21,6 @@ export default function App() {
       </Route>
 
       <Route element={<WithFooter />}>
-
         <Route path="/about" element={<About />} />
       </Route>
 
