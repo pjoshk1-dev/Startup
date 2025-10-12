@@ -1,4 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
