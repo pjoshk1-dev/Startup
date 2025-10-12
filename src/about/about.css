@@ -2,3 +2,12 @@ header {
   padding: 1.5rem;
   background-color: #06db7f;
 }
+
+img {
+  max-width: 100%;   /* Prevents overflow */
+  height: auto;      /* Keeps aspect ratio */
+  width: 400px;      /* Or whatever size you want */
+  display: block;    /* Removes inline spacing */
+  margin: 1rem auto; /* Optional: centers the image */
+  border-radius: 8px; /* Optional: style it */
+}
