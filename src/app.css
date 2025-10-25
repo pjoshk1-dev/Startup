@@ -75,3 +75,9 @@ footer {
   text-align: center;
   padding: 1rem;
 }
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
