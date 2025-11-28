@@ -1,29 +1,30 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
-
-const userRoutes = require("./routes/userRoutes");
-const authRoutes = require("./routes/authRoutes.js");
+// service/index.js
+const express = require('express');
+const path = require('path');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// Middleware to parse JSON from frontend
 app.use(express.json());
 
-// API Routes
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
+// Serve frontend (if stored in ../frontend)
+app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Serve frontend using Express static middleware
-app.use(express.static(path.join(__dirname, "../client/build")));
+// Mount your auth routes
+app.use('/api/auth', authRoutes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// Test endpoint (optional)
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Backend is working!' });
 });
 
-// Start server
+// Fallback to index.html for React router (if needed)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
 app.listen(PORT, () => {
-  console.log(`Backend running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

@@ -7,15 +7,42 @@ const Login = () => {
   const [error, setError] = useState('');
   const { user, login, logout } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = login(username, password);
-    if (!success) {
+
+    // Frontend validation (same behavior as before)
+    if (!username || !password) {
       setError('Please enter both username and password.');
-    } else {
+      return;
+    }
+
+    try {
+      // Backend request
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      // Handle backend errors
+      if (!res.ok || !data.success) {
+        setError(data.message || 'Invalid username or password.');
+        return;
+      }
+
+      // Backend approved → use existing AuthContext login
+      login(username);
+
+      // Reset fields + error (same behavior as before)
       setError('');
       setUsername('');
       setPassword('');
+
+    } catch (err) {
+      setError('Server error. Please try again later.');
+      console.error(err);
     }
   };
 
@@ -34,6 +61,7 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
+
             <div>
               <input
                 className="field"
@@ -43,10 +71,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
             {error && <p style={{ color: 'red' }}>{error}</p>}
+
             <button className="field" type="submit">
               Login
             </button>
+
             <button
               className="field"
               type="button"

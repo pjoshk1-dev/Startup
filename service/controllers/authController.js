@@ -1,47 +1,33 @@
-let users = [];
-let sessions = {};
-
-exports.register = (req, res) => {
-  const { email, password } = req.body;
-
-  if (users.find(u => u.email === email)) {
-    return res.status(400).json({ error: "Email already registered" });
-  }
-
-  users.push({ email, password });
-  res.json({ message: "Registered successfully" });
-};
-
 exports.login = (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) {
-    return res.status(401).json({ error: "Invalid credentials" });
+  // Simple validation
+  if (!username || !password) {
+    return res.status(400).json({
+      success: false,
+      message: 'Username and password are required.'
+    });
   }
 
-  const token = Math.random().toString(36).slice(2);
-  sessions[token] = email;
+  // TEMPORARY CLASS-ASSIGNMENT "FAKE USER DB"
+  // Replace with real DB later if needed
+  const storedUser = {
+    username: 'test',
+    password: '1234'
+  };
 
-  res.json({ message: "Logged in", token });
-};
-
-exports.logout = (req, res) => {
-  const token = req.headers.authorization;
-  delete sessions[token];
-
-  res.json({ message: "Logged out" });
-};
-
-exports.restricted = (req, res) => {
-  const token = req.headers.authorization;
-
-  if (!token || !sessions[token]) {
-    return res.status(403).json({ error: "Unauthorized" });
+  // Check credentials
+  if (username !== storedUser.username || password !== storedUser.password) {
+    return res.status(401).json({
+      success: false,
+      message: 'Invalid username or password.'
+    });
   }
 
-  res.json({
-    message: "Restricted data accessed",
-    user: sessions[token]
+  // If valid, send success
+  return res.json({
+    success: true,
+    message: 'Login successful!',
+    user: { username }
   });
 };
