@@ -1,5 +1,6 @@
 import React from 'react';
 import './about.css';
+import { useEffect, useState } from "react";
 
 function About() {
   const [catFact, setCatFact] = useState("");
