@@ -1,9 +1,23 @@
 import express from 'express';
-import { createUser, loginUser } from '../controllers/authController.js';
+import {
+  createAccount,
+  loginUser,
+  logoutUser,
+  restricted
+} from '../controllers/authController.js';
 
 const router = express.Router();
 
-router.post('/create', createUser);
+// CREATE ACCOUNT
+router.post('/create', createAccount);
+
+// LOGIN
 router.post('/login', loginUser);
+
+// LOGOUT
+router.post('/logout', logoutUser);
+
+// RESTRICTED ENDPOINT
+router.get('/restricted', restricted);
 
 export default router;

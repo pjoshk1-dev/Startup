@@ -18,13 +18,11 @@ app.use(express.json());          // allow JSON bodies
 app.use('/api/auth', authRoutes);
 
 // ---- Static Frontend ----
-// IMPORTANT: Adjust path to your actual frontend folder.
-// Example if your structure is: Startup/client/
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // Catch-all so React Router works on refresh
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // ---- Start Server ----
