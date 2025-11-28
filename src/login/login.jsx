@@ -5,19 +5,16 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');  // success/create messages
   const { user, login, logout } = useAuth();
 
+  // 🔹 Login Handler (uses backend)
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Frontend validation (same behavior as before)
-    if (!username || !password) {
-      setError('Please enter both username and password.');
-      return;
-    }
+    setError('');
+    setMessage('');
 
     try {
-      // Backend request
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -26,23 +23,47 @@ const Login = () => {
 
       const data = await res.json();
 
-      // Handle backend errors
-      if (!res.ok || !data.success) {
-        setError(data.message || 'Invalid username or password.');
+      if (!res.ok) {
+        setError(data.message || 'Login failed');
         return;
       }
 
-      // Backend approved → use existing AuthContext login
-      login(username);
+      // Call your existing auth context logic
+      login(username, password);
 
-      // Reset fields + error (same behavior as before)
-      setError('');
       setUsername('');
       setPassword('');
-
     } catch (err) {
-      setError('Server error. Please try again later.');
       console.error(err);
+      setError('Server error.');
+    }
+  };
+
+  // 🔹 Create Account Handler (also uses backend)
+  const handleCreateAccount = async () => {
+    setError('');
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/auth/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || 'Account creation failed');
+        return;
+      }
+
+      setMessage('Account created! You can now log in.');
+      setUsername('');
+      setPassword('');
+    } catch (err) {
+      console.error(err);
+      setError('Server error.');
     }
   };
 
@@ -51,6 +72,7 @@ const Login = () => {
       {!user ? (
         <>
           <h2>Login to save data and connect</h2>
+
           <form onSubmit={handleSubmit}>
             <div>
               <input
@@ -73,15 +95,17 @@ const Login = () => {
             </div>
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
+            {message && <p style={{ color: 'green' }}>{message}</p>}
 
             <button className="field" type="submit">
               Login
             </button>
 
+            {/* 🔹 NEW: Create account using backend */}
             <button
               className="field"
               type="button"
-              onClick={() => alert('Create account coming soon!')}
+              onClick={handleCreateAccount}
             >
               Create
             </button>
@@ -90,9 +114,7 @@ const Login = () => {
       ) : (
         <div className="user-panel">
           <h2>Welcome, {user.username}!</h2>
-          <button className="field" onClick={logout}>
-            Logout
-          </button>
+          <button className="field" onClick={logout}>Logout</button>
         </div>
       )}
     </div>

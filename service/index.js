@@ -1,30 +1,34 @@
-// service/index.js
-const express = require('express');
-const path = require('path');
-const authRoutes = require('./routes/authRoutes');
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON from frontend
-app.use(express.json());
+// ---- Required for ES modules to serve static frontend ----
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Serve frontend (if stored in ../frontend)
-app.use(express.static(path.join(__dirname, '../frontend')));
+// ---- Middleware ----
+app.use(cors());                  // safe because Vite proxies API calls
+app.use(express.json());          // allow JSON bodies
 
-// Mount your auth routes
+// ---- API Routes ----
 app.use('/api/auth', authRoutes);
 
-// Test endpoint (optional)
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Backend is working!' });
-});
+// ---- Static Frontend ----
+// IMPORTANT: Adjust path to your actual frontend folder.
+// Example if your structure is: Startup/client/
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// Fallback to index.html for React router (if needed)
+// Catch-all so React Router works on refresh
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
+// ---- Start Server ----
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Backend running at http://localhost:${PORT}`);
 });
