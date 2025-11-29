@@ -5,6 +5,32 @@ import { fileURLToPath } from 'url';
 
 import authRoutes from './routes/authRoutes.js';
 
+import fs from "fs";
+import mongoose from "mongoose";
+
+// Load dbconfig.json securely
+let rawConfig;
+try {
+  rawConfig = fs.readFileSync("./dbconfig.json");
+} catch (err) {
+  console.error("ERROR: Missing dbconfig.json file in /service folder");
+  process.exit(1);
+}
+
+const config = JSON.parse(rawConfig);
+
+// Build the connection string
+const mongoUri = `mongodb+srv://${config.username}:${config.password}@${config.hostname}/${config.database}?retryWrites=true&w=majority`;
+
+// Test connection (similar to instructor’s example)
+mongoose
+  .connect(mongoUri)
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => {
+    console.error(`ERROR: Unable to connect to MongoDB: ${err.message}`);
+    process.exit(1);
+  });
+  
 const app = express();
 
 // ---- Required for ES modules to serve static frontend ----
