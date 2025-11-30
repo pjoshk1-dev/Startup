@@ -8,6 +8,10 @@ import authRoutes from './routes/authRoutes.js';
 import fs from "fs";
 import mongoose from "mongoose";
 
+import cardRoutes from './routes/cardRoutes.js';
+
+app.use('/api/cards', cardRoutes);
+
 // Load dbconfig.json securely
 let rawConfig;
 try {
@@ -30,7 +34,7 @@ mongoose
     console.error(`ERROR: Unable to connect to MongoDB: ${err.message}`);
     process.exit(1);
   });
-  
+
 const app = express();
 
 // ---- Required for ES modules to serve static frontend ----
