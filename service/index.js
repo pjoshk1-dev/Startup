@@ -3,12 +3,12 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import authRoutes from './routes/authRoutes.js';
+import authRoutes from './authRoutes.js';
 
 import fs from "fs";
 import mongoose from "mongoose";
 
-import cardRoutes from './routes/cardRoutes.js';
+import cardRoutes from './cardRoutes.js';
 
 // Load dbconfig.json securely
 let rawConfig;
