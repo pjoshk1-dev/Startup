@@ -10,8 +10,6 @@ import mongoose from "mongoose";
 
 import cardRoutes from './routes/cardRoutes.js';
 
-app.use('/api/cards', cardRoutes);
-
 // Load dbconfig.json securely
 let rawConfig;
 try {
@@ -46,6 +44,7 @@ app.use(express.json());          // allow JSON bodies
 
 // ---- API Routes ----
 app.use('/api/auth', authRoutes);
+app.use('/api/cards', cardRoutes);
 
 // ---- Static Frontend ----
 app.use(express.static(path.join(__dirname, '../dist')));

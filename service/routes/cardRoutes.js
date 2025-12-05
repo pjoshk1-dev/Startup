@@ -1,29 +1,49 @@
 import express from "express";
-import Card from "../models/Card.js";
+import User from "../models/User.js";
+import authMiddleware from "../middleware/auth.js";
 
 const router = express.Router();
 
-// Allowed colors for random draw
+// Require authentication for all card routes
+router.use(authMiddleware);
+
+// Allowed card colors
 const CARD_COLORS = ["red", "orange", "yellow", "green", "blue", "purple"];
 
 function getRandomColor() {
-  const index = Math.floor(Math.random() * CARD_COLORS.length);
-  return CARD_COLORS[index];
+  return CARD_COLORS[Math.floor(Math.random() * CARD_COLORS.length)];
 }
 
-// POST /api/cards/random  → creates a new card with a random color
-router.post("/random", async (req, res) => {
+// GET /api/cards  → return the user's cards
+router.get("/", async (req, res) => {
   try {
-    const card = new Card({
-      color: getRandomColor()
-    });
+    const user = await User.findById(req.userId);
 
-    await card.save();
-    res.status(201).json(card);
+    if (!user) return res.status(404).json({ error: "User not found" });
 
+    res.json(user.cards);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to create card" });
+    res.status(500).json({ error: "Failed to load cards" });
+  }
+});
+
+// POST /api/cards/add  → add a random color to user.cards
+router.post("/add", async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    const color = getRandomColor();
+
+    user.cards.push(color);
+    await user.save();
+
+    res.status(201).json({ color });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to add card" });
   }
 });
 
