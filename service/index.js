@@ -47,15 +47,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/cards', cardRoutes);
 
 // ---- Static Frontend ----
-app.use(express.static(path.join(__dirname, '../dist')));
-
-// Catch-all so React Router works on refresh
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // ---- Start Server ----
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);
 });
