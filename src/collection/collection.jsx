@@ -10,14 +10,17 @@ const Collection = () => {
     async function loadCards() {
       try {
         const token = localStorage.getItem("token");
+
         if (!token) {
-          console.error("No auth token — user may not be logged in");
+          console.error("No auth token found");
           setLoading(false);
           return;
         }
 
         const res = await fetch("/api/cards", {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         if (!res.ok) {
@@ -43,9 +46,16 @@ const Collection = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("/api/cards/add", {
+      if (!token) {
+        console.error("No auth token found");
+        return;
+      }
+
+      const res = await fetch("/api/cards/random", {
         method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (!res.ok) {
@@ -53,8 +63,8 @@ const Collection = () => {
         return;
       }
 
-      const data = await res.json(); // { color: "green" }
-      setCards((prev) => [...prev, data.color]);
+      const data = await res.json();
+      setCards(data.cards);
     } catch (err) {
       console.error("Error adding card:", err);
     }
@@ -65,7 +75,6 @@ const Collection = () => {
   return (
     <div className="content">
       <main>
-        {/* Add card button */}
         <button
           onClick={addCard}
           className="add-card-button"

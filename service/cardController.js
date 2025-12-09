@@ -6,7 +6,7 @@ const COLORS = ["red", "orange", "yellow", "green", "blue", "purple"];
 // Adds a random card color to the logged-in user's card list.
 export async function drawRandomCard(req, res) {
   try {
-    const userId = req.user.id;
+    const userId = req.userId;
 
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
 
@@ -34,7 +34,7 @@ export async function drawRandomCard(req, res) {
 // Returns the user's card list
 export async function getCards(req, res) {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.userId);
 
     if (!user) return res.status(404).json({ message: "User not found" });
 

@@ -1,10 +1,10 @@
 import express from "express";
-import auth from "./auth.js";  // or authMiddleware.js depending on your file
+import authMiddleware from "./auth.js";
 import { drawRandomCard, getCards } from "./cardController.js";
 
 const router = express.Router();
 
-router.post("/random", auth, drawRandomCard);
-router.get("/", auth, getCards);
+router.post("/random", authMiddleware, drawRandomCard);
+router.get("/", authMiddleware, getCards);
 
 export default router;

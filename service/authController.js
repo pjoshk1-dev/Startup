@@ -64,7 +64,15 @@ export async function loginUser(req, res) {
     }
 
     // JWT
-    const token = jwt.sign({ userId: user._id }, JWT_SECRET);
+    const token = jwt.sign(
+  {
+    userId: user._id.toString(),
+    username: user.username
+  },
+  JWT_SECRET,
+  { expiresIn: "1h" }
+);
+
 
     res.json({
       message: "Login successful.",
